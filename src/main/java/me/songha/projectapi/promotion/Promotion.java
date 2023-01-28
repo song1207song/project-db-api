@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import me.songha.projectapi.common.model.DateTime;
+import me.songha.projectapi.common.model.ValidDateTime;
 import me.songha.projectapi.coupon.Coupon;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -40,6 +41,9 @@ public class Promotion {
     @Column(name = "status")
     @NotNull
     private int status;
+
+    @Embedded
+    private ValidDateTime validDateTime;
 
     @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
     private List<Coupon> coupons = new ArrayList<>();

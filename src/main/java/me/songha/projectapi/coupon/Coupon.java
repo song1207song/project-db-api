@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import me.songha.projectapi.common.model.DateTime;
+import me.songha.projectapi.common.model.ValidDateTime;
 import me.songha.projectapi.promotion.Promotion;
 import me.songha.projectapi.ticket.Ticket;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -12,7 +13,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,13 +48,8 @@ public class Coupon {
     @NotNull
     private int limit;
 
-    @Column(name = "start_at")
-    @NotNull
-    private ZonedDateTime startAt;
-
-    @Column(name = "end_at")
-    @NotNull
-    private ZonedDateTime endAt;
+    @Embedded
+    private ValidDateTime validDateTime;
 
     @Embedded
     private DateTime dateTime;

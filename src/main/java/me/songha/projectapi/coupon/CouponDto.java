@@ -33,10 +33,9 @@ public class CouponDto {
             this.type = coupon.getType();
             this.groupType = coupon.getGroupType();
             this.limit = coupon.getLimit();
-            this.startAt = coupon.getStartAt();
-            this.endAt = coupon.getEndAt();
+            this.startAt = coupon.getValidDateTime().getStartAt();
+            this.endAt = coupon.getValidDateTime().getEndAt();
         }
-
     }
 
     @Getter
@@ -60,8 +59,8 @@ public class CouponDto {
             this.type = coupon.getType();
             this.groupType = coupon.getGroupType();
             this.limit = coupon.getLimit();
-            this.startAt = coupon.getStartAt();
-            this.endAt = coupon.getEndAt();
+            this.startAt = coupon.getValidDateTime().getStartAt();
+            this.endAt = coupon.getValidDateTime().getEndAt();
             setTicketDtoList(coupon.getTickets());
         }
 
@@ -74,7 +73,5 @@ public class CouponDto {
                 tickets.add(ticketResponse);
             }
         }
-
     }
-
 }
