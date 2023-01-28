@@ -56,7 +56,7 @@ public class Coupon {
     @Embedded
     private DateTime dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 }
