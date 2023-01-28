@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class Promotion {
 
     @Column(name = "name", length = 64)
     @NotNull
+    @Size(max = 64)
     private String name;
 
     @Column(name = "status")

@@ -18,6 +18,8 @@ public class PromotionDto {
         private DateTime dateTime;
 
         public Response(Promotion promotion) {
+            if (promotion == null) return;
+
             this.name = promotion.getName();
             this.dateTime = promotion.getDateTime();
             this.coupons = promotion.getCoupons();
