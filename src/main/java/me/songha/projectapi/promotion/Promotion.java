@@ -27,16 +27,21 @@ public class Promotion {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 64)
+    @Column(name = "name", length = 32)
+    @NotNull
+    @Size(max = 32)
+    private String name;
+
+    @Column(name = "title", length = 64)
     @NotNull
     @Size(max = 64)
-    private String name;
+    private String title;
 
     @Column(name = "status")
     @NotNull
     private int status;
 
-    @OneToMany(mappedBy = "promotion")
+    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
     private List<Coupon> coupons = new ArrayList<>();
 
     @Embedded

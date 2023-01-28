@@ -6,12 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import me.songha.projectapi.common.model.DateTime;
 import me.songha.projectapi.promotion.Promotion;
+import me.songha.projectapi.ticket.Ticket;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "coupon")
@@ -56,7 +59,10 @@ public class Coupon {
     @Embedded
     private DateTime dateTime;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "promotion_id")
     private Promotion promotion;
+
+    @OneToMany(mappedBy = "coupon", fetch = FetchType.LAZY)
+    private List<Ticket> tickets = new ArrayList<>();
 }

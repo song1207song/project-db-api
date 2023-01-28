@@ -23,18 +23,17 @@ public class PromotionDto {
 
             this.id = promotion.getId();
             this.name = promotion.getName();
-            this.coupons = couponDtoList(promotion.getCoupons());
+            setCouponDtoList(promotion.getCoupons());
         }
 
-        private List<CouponDto.Response> couponDtoList(List<Coupon> coupons) {
-            List<CouponDto.Response> couponResponseList = new ArrayList<>();
-            for (Coupon coupon : coupons) {
+        private void setCouponDtoList(List<Coupon> couponsFromEntity) {
+            coupons = new ArrayList<>();
+            for (Coupon coupon : couponsFromEntity) {
                 CouponDto.Response couponResponse = CouponDto.Response.builder()
                         .coupon(coupon)
                         .build();
-                couponResponseList.add(couponResponse);
+                coupons.add(couponResponse);
             }
-            return couponResponseList;
         }
     }
 
