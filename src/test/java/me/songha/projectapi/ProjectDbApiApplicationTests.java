@@ -1,4 +1,4 @@
-package me.songha.tutorial;
+package me.songha.projectapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

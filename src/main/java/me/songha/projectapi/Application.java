@@ -1,4 +1,4 @@
-package me.songha.tutorial;
+package me.songha.projectapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
