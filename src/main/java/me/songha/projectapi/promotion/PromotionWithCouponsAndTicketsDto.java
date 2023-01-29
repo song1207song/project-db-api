@@ -12,12 +12,12 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PromotionWithCouponsDto {
+public class PromotionWithCouponsAndTicketsDto {
     private PromotionDto promotion;
     private List<CouponWithTicketsDto> coupons = new ArrayList<>();
 
     @Builder
-    public PromotionWithCouponsDto(Promotion promotion) {
+    public PromotionWithCouponsAndTicketsDto(Promotion promotion) {
         this.promotion = new PromotionDto(promotion);
         setCouponWithTicketsDtoList(promotion.getCoupons());
     }

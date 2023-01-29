@@ -14,7 +14,4 @@ public class PromotionService {
         return promotionRepository.findById(id).orElse(null);
     }
 
-//    public PromotionDto.ResponseWithCouponsAndTickets searchPromotionWithCoupons(Long id) {
-//        return commonRepository.searchPromotionWithCoupons(id);
-//    }
 }
