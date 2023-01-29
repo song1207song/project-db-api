@@ -13,12 +13,13 @@ public class CouponController {
     private final CouponService couponService;
 
     @GetMapping("/id/{id}")
-    public CouponDto.Response findById(@PathVariable Long id) {
-        return new CouponDto.Response(couponService.findById(id));
+    public CouponDto findById(@PathVariable Long id) {
+        return new CouponDto(couponService.findById(id));
     }
 
     @GetMapping("/id/{id}/tickets")
-    public CouponDto.ResponseWithTickets findByIdWithTickets(@PathVariable Long id) {
-        return new CouponDto.ResponseWithTickets(couponService.findById(id));
+    public CouponWithTicketsDto findByIdWithTickets(@PathVariable Long id) {
+        return new CouponWithTicketsDto(couponService.findById(id));
     }
+
 }

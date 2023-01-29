@@ -4,74 +4,111 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.songha.projectapi.common.model.ValidDateTime;
-import me.songha.projectapi.coupon.Coupon;
 import me.songha.projectapi.coupon.CouponDto;
 
-import java.util.ArrayList;
+import java.time.ZonedDateTime;
 import java.util.List;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PromotionDto {
+    private Long id;
+    private String name;
+    private String title;
+    private ZonedDateTime startAt;
+    private ZonedDateTime endAt;
+    private List<CouponDto> coupons;
 
-    @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class ResponseWithCoupons {
-        private Long id;
-        private String name;
-        private String title;
-        private ValidDateTime validDateTime;
-        private List<CouponDto.Response> coupons;
-
-        @Builder
-        public ResponseWithCoupons(Promotion promotion) {
-            if (promotion == null) return;
-
-            this.id = promotion.getId();
-            this.name = promotion.getName();
-            this.title = promotion.getTitle();
-            this.validDateTime = promotion.getValidDateTime();
-            setCouponDtoList(promotion.getCoupons());
-        }
-
-        private void setCouponDtoList(List<Coupon> couponsFromEntity) {
-            coupons = new ArrayList<>();
-            for (Coupon coupon : couponsFromEntity) {
-                CouponDto.Response couponResponse = CouponDto.Response.builder()
-                        .coupon(coupon)
-                        .build();
-                coupons.add(couponResponse);
-            }
-        }
+    @Builder
+    public PromotionDto(Long id, String name, String title, ZonedDateTime startAt, ZonedDateTime endAt, List<CouponDto> coupons) {
+        this.id = id;
+        this.name = name;
+        this.title = title;
+        this.startAt = startAt;
+        this.endAt = endAt;
+        this.coupons = coupons;
     }
 
-    @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class ResponseWithCouponsAndTickets {
-        private Long id;
-        private String name;
-        private String title;
-        private ValidDateTime validDateTime;
-        private List<CouponDto.ResponseWithTickets> couponsWithTickets;
+    //    public static class ResponseWithCoupons {
+//        private Long id;
+//        private String name;
+//        private String title;
+//        private ValidDateTime validDateTime;
+//        private List<CouponDto> coupons;
+//
+//        @Builder
+//        public ResponseWithCoupons(Promotion promotion) {
+//            if (promotion == null) return;
+//
+//            this.id = promotion.getId();
+//            this.name = promotion.getName();
+//            this.title = promotion.getTitle();
+//            this.validDateTime = promotion.getValidDateTime();
+//            setCouponDtoList(promotion.getCoupons());
+//        }
+//
+//        private void setCouponDtoList(List<Coupon> couponsFromEntity) {
+//            coupons = new ArrayList<>();
+//            for (Coupon coupon : couponsFromEntity) {
+//                CouponDto.Response couponResponse = CouponDto.Response.builder()
+//                        .coupon(coupon)
+//                        .build();
+//                coupons.add(couponResponse);
+//            }
+//        }
+//    }
 
-        @Builder
-        public ResponseWithCouponsAndTickets(Promotion promotion) {
-            if (promotion == null) return;
+//    @Getter
+//    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//    public static class ResponseWithCouponsAndTickets {
+//        private Long id;
+//        private String name;
+//        private String title;
+//        private ZonedDateTime startAt;
+//        private ZonedDateTime endAt;
+//        private List<Coupon> coupons;
+//
+//        @QueryProjection
+//        public ResponseWithCouponsAndTickets(Long id, String name, String title
+//                , ZonedDateTime startAt, ZonedDateTime endAt
+//                , List<Coupon> coupons) {
+//            this.id = id;
+//            this.name = name;
+//            this.title = title;
+//            this.startAt = startAt;
+//            this.endAt = endAt;
+//            this.coupons = coupons;
+//        }
+//    }
 
-            this.id = promotion.getId();
-            this.name = promotion.getName();
-            this.title = promotion.getTitle();
-            this.validDateTime = promotion.getValidDateTime();
-            setCouponDtoList(promotion.getCoupons());
-        }
+    //    @Getter
+//    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//    public static class ResponseWithCouponsAndTickets {
+//        private Long id;
+//        private String name;
+//        private String title;
+//        private ValidDateTime validDateTime;
+//        private List<CouponDto.ResponseWithTickets> couponsWithTickets;
+//
+//        @Builder
+//        public ResponseWithCouponsAndTickets(Promotion promotion) {
+//            if (promotion == null) return;
+//
+//            this.id = promotion.getId();
+//            this.name = promotion.getName();
+//            this.title = promotion.getTitle();
+//            this.validDateTime = promotion.getValidDateTime();
+//            setCouponDtoList(promotion.getCoupons());
+//        }
 
-        private void setCouponDtoList(List<Coupon> couponsFromEntity) {
-            couponsWithTickets = new ArrayList<>();
-            for (Coupon coupon : couponsFromEntity) {
-                CouponDto.ResponseWithTickets couponResponse = CouponDto.ResponseWithTickets.builder()
-                        .coupon(coupon)
-                        .build();
-                couponsWithTickets.add(couponResponse);
-            }
-        }
-    }
+//        private void setCouponDtoList(List<Coupon> couponsFromEntity) {
+//            couponsWithTickets = new ArrayList<>();
+//            for (Coupon coupon : couponsFromEntity) {
+//                CouponDto.ResponseWithTickets couponResponse = CouponDto.ResponseWithTickets.builder()
+//                        .coupon(coupon)
+//                        .build();
+//                couponsWithTickets.add(couponResponse);
+//            }
+//        }
+//    }
 }
