@@ -29,8 +29,10 @@ public class CouponDto {
         this.limit = coupon.getLimit();
         this.startAt = coupon.getValidDateTime().getStartAt();
         this.endAt = coupon.getValidDateTime().getEndAt();
-        this.questType = coupon.getQuest().getType();
-        this.questValue = coupon.getQuest().getValue();
+        if (coupon.getCouponQuest() != null) {
+            this.questType = coupon.getCouponQuest().getType();
+            this.questValue = coupon.getCouponQuest().getValue();
+        }
     }
 
 }

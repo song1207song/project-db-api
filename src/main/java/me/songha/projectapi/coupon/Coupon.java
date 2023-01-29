@@ -7,7 +7,6 @@ import lombok.ToString;
 import me.songha.projectapi.common.model.DateTime;
 import me.songha.projectapi.common.model.ValidDateTime;
 import me.songha.projectapi.promotion.Promotion;
-import me.songha.projectapi.quest.Quest;
 import me.songha.projectapi.ticket.Ticket;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -50,6 +49,9 @@ public class Coupon {
     private int limit;
 
     @Embedded
+    private CouponQuest couponQuest;
+
+    @Embedded
     private ValidDateTime validDateTime;
 
     @Embedded
@@ -64,6 +66,8 @@ public class Coupon {
 
     // optional = false 이란?
     // 1:1 관계 + null일 수 없는 상황일 경우 left outer join 대신 inner join 을 사용하고 싶을 때 적용
-    @OneToOne(mappedBy = "coupon", fetch = FetchType.EAGER, optional = false)
-    private Quest quest;
+//    @OneToOne(mappedBy = "coupon", fetch = FetchType.EAGER, optional = false)
+//    private Quest quest;
+
+
 }
