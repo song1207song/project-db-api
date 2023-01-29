@@ -19,15 +19,7 @@ public class PromotionDto {
     private ZonedDateTime endAt;
     private List<CouponDto> coupons;
 
-    @Builder
-    public PromotionDto(Long id, String name, String title, ZonedDateTime startAt, ZonedDateTime endAt, List<CouponDto> coupons) {
-        this.id = id;
-        this.name = name;
-        this.title = title;
-        this.startAt = startAt;
-        this.endAt = endAt;
-        this.coupons = coupons;
-    }
+
 
     //    public static class ResponseWithCoupons {
 //        private Long id;

@@ -17,6 +17,8 @@ public class CouponDto {
     private int limit;
     private ZonedDateTime startAt;
     private ZonedDateTime endAt;
+    private String questType;
+    private int questValue;
 
     @Builder
     public CouponDto(Coupon coupon) {
@@ -27,6 +29,8 @@ public class CouponDto {
         this.limit = coupon.getLimit();
         this.startAt = coupon.getValidDateTime().getStartAt();
         this.endAt = coupon.getValidDateTime().getEndAt();
+        this.questType = coupon.getQuest().getType();
+        this.questValue = coupon.getQuest().getValue();
     }
 
 }
