@@ -69,5 +69,4 @@ public class Coupon {
 //    @OneToOne(mappedBy = "coupon", fetch = FetchType.EAGER, optional = false)
 //    private Quest quest;
 
-
 }

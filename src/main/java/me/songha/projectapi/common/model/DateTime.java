@@ -10,7 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Embeddable
 @ToString
@@ -21,10 +21,10 @@ public class DateTime {
     @CreatedDate
     @Column(name = "created_at", updatable = false)
     @NotNull
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
 
     @LastModifiedDate
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private ZonedDateTime updatedAt;
 
 }

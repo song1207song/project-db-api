@@ -1,9 +1,6 @@
 package me.songha.projectapi.ticket;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import me.songha.projectapi.common.model.DateTime;
 import me.songha.projectapi.coupon.Coupon;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -39,4 +36,10 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "coupon_id")
     private Coupon coupon;
+
+    @Builder
+    public Ticket(String userId, Coupon coupon) {
+        this.userId = userId;
+        this.coupon = coupon;
+    }
 }

@@ -19,7 +19,7 @@ public class TicketResult {
     @Size(max = 16)
     private String resultCode;
 
-    @Column(name = "result_text", length = 2048)
+    @Column(name = "result_log", length = 2048)
     @Size(max = 2048)
-    private String resultText;
+    private String resultLog;
 }
