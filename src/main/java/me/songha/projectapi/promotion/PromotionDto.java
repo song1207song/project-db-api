@@ -4,10 +4,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.songha.projectapi.coupon.CouponDto;
 
 import java.time.ZonedDateTime;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -17,11 +15,17 @@ public class PromotionDto {
     private String title;
     private ZonedDateTime startAt;
     private ZonedDateTime endAt;
-    private List<CouponDto> coupons;
 
+    @Builder
+    public PromotionDto(Promotion promotion) {
+        this.id = promotion.getId();
+        this.name = promotion.getName();
+        this.title = promotion.getTitle();
+        this.startAt = promotion.getValidDateTime().getStartAt();
+        this.endAt = promotion.getValidDateTime().getEndAt();
+    }
 
-
-    //    public static class ResponseWithCoupons {
+//    public static class ResponseWithCoupons {
 //        private Long id;
 //        private String name;
 //        private String title;

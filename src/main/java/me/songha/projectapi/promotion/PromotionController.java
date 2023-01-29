@@ -27,4 +27,16 @@ public class PromotionController {
 //    public PromotionDto.ResponseWithCouponsAndTickets findByIdWithCouponsAndTickets(@PathVariable Long id) {
 //        return new PromotionDto.ResponseWithCouponsAndTickets(promotionService.findById(id));
 //    }
+
+    @GetMapping("/id/{id}")
+    public PromotionDto findById(@PathVariable Long id) {
+        return new PromotionDto(promotionService.findById(id));
+    }
+
+    @GetMapping("/id/{id}/coupons/tickets")
+    public PromotionWithCouponsDto findByIdWithCouponsAndTickets(@PathVariable Long id) {
+        return new PromotionWithCouponsDto(promotionService.findById(id));
+    }
+
+
 }
