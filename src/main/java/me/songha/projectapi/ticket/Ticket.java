@@ -38,8 +38,13 @@ public class Ticket {
     private Coupon coupon;
 
     @Builder
-    public Ticket(String userId, Coupon coupon) {
+    public Ticket(String userId, TicketResult ticketResult, Coupon coupon) {
         this.userId = userId;
+        this.ticketResult = ticketResult;
         this.coupon = coupon;
+    }
+
+    public void updateTicketResult(TicketResult ticketResult) {
+        this.ticketResult = ticketResult;
     }
 }

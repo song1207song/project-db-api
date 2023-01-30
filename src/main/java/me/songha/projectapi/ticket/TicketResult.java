@@ -1,9 +1,6 @@
 package me.songha.projectapi.ticket;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -22,4 +19,10 @@ public class TicketResult {
     @Column(name = "result_log", length = 2048)
     @Size(max = 2048)
     private String resultLog;
+
+    @Builder
+    public TicketResult(String resultCode, String resultLog) {
+        this.resultCode = resultCode;
+        this.resultLog = resultLog;
+    }
 }

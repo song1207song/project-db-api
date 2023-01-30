@@ -15,4 +15,17 @@ public class TicketService {
         Coupon coupon = couponRepository.findById(ticketInsertRequestDto.getCouponId()).orElse(null);
         return ticketRepository.save(ticketInsertRequestDto.toEntity(coupon));
     }
+
+    public Ticket update(TicketDto.UpdateRequest ticketUpdateRequestDto) {
+        Ticket ticket = ticketRepository
+                .findById(ticketUpdateRequestDto.getId())
+                .orElseThrow(() -> new RuntimeException("not found"));
+
+        ticket.updateTicketResult(TicketResult.builder()
+                .resultLog(ticketUpdateRequestDto.getResultLog())
+                .resultCode(ticketUpdateRequestDto.getResultCode())
+                .build());
+
+        return ticketRepository.save(ticket);
+    }
 }

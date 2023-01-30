@@ -13,4 +13,9 @@ public class TicketController {
     public TicketDto.Response save(@RequestBody TicketDto.InsertRequest ticketInsertRequestDto) {
         return new TicketDto.Response(ticketService.save(ticketInsertRequestDto));
     }
+
+    @PatchMapping
+    public TicketDto.Response update(@RequestBody TicketDto.UpdateRequest ticketUpdateRequestDto) {
+        return new TicketDto.Response(ticketService.update(ticketUpdateRequestDto));
+    }
 }
