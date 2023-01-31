@@ -16,12 +16,12 @@ public class TicketService {
     private final CouponRepository couponRepository;
     private final CommonRepository commonRepository;
 
-    public Ticket save(TicketDto.InsertRequest ticketInsertRequestDto) {
+    public Ticket save(TicketIssuedDto.InsertRequest ticketInsertRequestDto) {
         Coupon coupon = couponRepository.findById(ticketInsertRequestDto.getCouponId()).orElse(null);
         return ticketRepository.save(ticketInsertRequestDto.toEntity(coupon));
     }
 
-    public Ticket update(TicketDto.UpdateRequest ticketUpdateRequestDto) {
+    public Ticket update(TicketIssuedDto.UpdateRequest ticketUpdateRequestDto) {
         Ticket ticket = ticketRepository
                 .findById(ticketUpdateRequestDto.getId())
                 .orElseThrow(() -> new RuntimeException("not found"));
@@ -34,7 +34,7 @@ public class TicketService {
         return ticketRepository.save(ticket);
     }
 
-    public List<Tuple> findTicketsByUserIdAndCouponIds(String userId, List<Long> couponIds) {
+    public List<TicketDto> findTicketsByUserIdAndCouponIds(String userId, List<Long> couponIds) {
         return commonRepository.findTicketsByUserIdAndCouponIds(userId, couponIds);
     }
 }

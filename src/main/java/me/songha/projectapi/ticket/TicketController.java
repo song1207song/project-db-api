@@ -1,6 +1,5 @@
 package me.songha.projectapi.ticket;
 
-import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
 import me.songha.projectapi.common.model.TicketSearchCondition;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +13,17 @@ public class TicketController {
     private final TicketService ticketService;
 
     @PostMapping
-    public TicketDto.Response save(@RequestBody TicketDto.InsertRequest ticketInsertRequestDto) {
-        return new TicketDto.Response(ticketService.save(ticketInsertRequestDto));
+    public TicketIssuedDto.Response save(@RequestBody TicketIssuedDto.InsertRequest ticketInsertRequestDto) {
+        return new TicketIssuedDto.Response(ticketService.save(ticketInsertRequestDto));
     }
 
     @PatchMapping
-    public TicketDto.Response update(@RequestBody TicketDto.UpdateRequest ticketUpdateRequestDto) {
-        return new TicketDto.Response(ticketService.update(ticketUpdateRequestDto));
+    public TicketIssuedDto.Response update(@RequestBody TicketIssuedDto.UpdateRequest ticketUpdateRequestDto) {
+        return new TicketIssuedDto.Response(ticketService.update(ticketUpdateRequestDto));
     }
 
     @GetMapping("/my/tickets")
-    public List<Tuple> myTickets(TicketSearchCondition condition) {
+    public List<TicketDto> myTickets(TicketSearchCondition condition) {
         return ticketService.findTicketsByUserIdAndCouponIds(condition.getUserId(), condition.getCouponIds());
     }
 }
