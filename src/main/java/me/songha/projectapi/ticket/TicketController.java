@@ -23,7 +23,12 @@ public class TicketController {
     }
 
     @GetMapping("/my/tickets")
-    public List<TicketDto> myTickets(TicketSearchCondition condition) {
+    public List<TicketDto> findTicketsByUserIdAndCouponIds(TicketSearchCondition condition) {
         return ticketService.findTicketsByUserIdAndCouponIds(condition.getUserId(), condition.getCouponIds());
+    }
+
+    @GetMapping("/my/tickets/promotion-id/{promotionId}/user-id/{userId}")
+    public List<TicketDto> findTicketsByUserIdAndPromotionId(@PathVariable Long promotionId, @PathVariable String userId) {
+        return ticketService.findTicketsByUserIdAndPromotionId(userId, promotionId);
     }
 }

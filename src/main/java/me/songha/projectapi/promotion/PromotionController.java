@@ -17,9 +17,9 @@ public class PromotionController {
         return new PromotionDto(promotionService.findById(id));
     }
 
-    @GetMapping("/id/{id}/coupons/tickets")
-    public PromotionWithCouponsAndTicketsDto findByIdWithCouponsAndTickets(@PathVariable Long id) {
-        return new PromotionWithCouponsAndTicketsDto(promotionService.findById(id));
+    @GetMapping("/id/{id}/coupons")
+    public PromotionWithCouponsDto findByIdWithCouponsAndTickets(@PathVariable Long id) {
+        return new PromotionWithCouponsDto(promotionService.findById(id));
     }
 
 }

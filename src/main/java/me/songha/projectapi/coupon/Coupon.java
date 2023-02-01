@@ -64,9 +64,4 @@ public class Coupon {
     @OneToMany(mappedBy = "coupon", fetch = FetchType.LAZY)
     private List<Ticket> tickets = new ArrayList<>();
 
-    // optional = false 이란?
-    // 1:1 관계 + null일 수 없는 상황일 경우 left outer join 대신 inner join 을 사용하고 싶을 때 적용
-//    @OneToOne(mappedBy = "coupon", fetch = FetchType.EAGER, optional = false)
-//    private Quest quest;
-
 }

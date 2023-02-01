@@ -5,29 +5,29 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.songha.projectapi.coupon.Coupon;
-import me.songha.projectapi.coupon.CouponWithTicketsDto;
+import me.songha.projectapi.coupon.CouponDto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PromotionWithCouponsAndTicketsDto {
+public class PromotionWithCouponsDto {
     private PromotionDto promotion;
-    private List<CouponWithTicketsDto> coupons = new ArrayList<>();
+    private List<CouponDto> coupons = new ArrayList<>();
 
     @Builder
-    public PromotionWithCouponsAndTicketsDto(Promotion promotion) {
+    public PromotionWithCouponsDto(Promotion promotion) {
         this.promotion = new PromotionDto(promotion);
-        setCouponWithTicketsDtoList(promotion.getCoupons());
+        setCouponDtoList(promotion.getCoupons());
     }
 
-    private void setCouponWithTicketsDtoList(List<Coupon> couponsFromEntity) {
+    private void setCouponDtoList(List<Coupon> couponsFromEntity) {
         for (Coupon coupon : couponsFromEntity) {
-            CouponWithTicketsDto couponWithTicketsDto = CouponWithTicketsDto.builder()
+            CouponDto couponDto = CouponDto.builder()
                     .coupon(coupon)
                     .build();
-            coupons.add(couponWithTicketsDto);
+            coupons.add(couponDto);
         }
     }
 }

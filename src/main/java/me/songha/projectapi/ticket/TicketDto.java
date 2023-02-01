@@ -1,5 +1,6 @@
 package me.songha.projectapi.ticket;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -25,5 +26,10 @@ public class TicketDto {
         this.coupon = new CouponDto(couponEntity);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    @JsonIgnore
+    public Long getCouponId() {
+        return coupon.getId();
     }
 }

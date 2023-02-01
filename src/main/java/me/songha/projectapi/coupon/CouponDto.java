@@ -22,6 +22,8 @@ public class CouponDto {
 
     @Builder
     public CouponDto(Coupon coupon) {
+        if(coupon == null) return;
+
         this.id = coupon.getId();
         this.name = coupon.getName();
         this.type = coupon.getType();

@@ -1,6 +1,5 @@
 package me.songha.projectapi.ticket;
 
-import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
 import me.songha.projectapi.common.repository.CommonRepository;
 import me.songha.projectapi.coupon.Coupon;
@@ -36,5 +35,9 @@ public class TicketService {
 
     public List<TicketDto> findTicketsByUserIdAndCouponIds(String userId, List<Long> couponIds) {
         return commonRepository.findTicketsByUserIdAndCouponIds(userId, couponIds);
+    }
+
+    public List<TicketDto> findTicketsByUserIdAndPromotionId(String userId, Long promotionId) {
+        return commonRepository.findTicketsByUserIdAndPromotionId(userId, promotionId);
     }
 }
