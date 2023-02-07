@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @Slf4j
 @Component
-public class JwtFilter extends OncePerRequestFilter {
+public class JwtFilter extends OncePerRequestFilter { // OncePerRequestFilter : 요청 당 한 번만 적용되는 것을 보장해주는 필터
     private final JwtUtil jwtUtil;
     private final String headerKey;
 
